@@ -1,7 +1,5 @@
 package leetcode
 
-import "fmt"
-
 func MergeKLists(lists []*ListNode) *ListNode {
 	length := len(lists)
 	if length == 0 {
@@ -44,7 +42,7 @@ func TestMergeKLists() {
 			input = append(input, NewList(list))
 		}
 		output := MergeKLists(input)
-		Assert(output.EqualsArr(expect), fmt.Sprintf("merge k lists: %v expect: %v output: %v", lists, expect, output))
+		Assert(output.EqualsArr(expect),"merge k lists: %v expect: %v output: %v", lists, expect, output)
 	}
 	f([][]int{{1, 4, 5}, {1, 3, 4}, {2, 6}}, []int{1, 1, 2, 3, 4, 4, 5, 6})
 	f([][]int{}, []int{})

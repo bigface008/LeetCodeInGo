@@ -2,12 +2,12 @@ package leetcode
 
 import "fmt"
 
-func Assert(condition bool, name string) {
+func Assert(condition bool, format string, a ...any) {
 	if condition {
-		print("[PASSED]")
+		print("[PASSED] ")
 	} else {
-		print("[FAILED]")
+		print("[FAILED] ")
 	}
-	fmt.Printf(" %v", name)
+	fmt.Printf(format, a...)
 	println()
 }
