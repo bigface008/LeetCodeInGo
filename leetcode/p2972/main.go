@@ -16,9 +16,10 @@ func incremovableSubarrayCount(nums []int) int64 {
 		return int64(N * (N + 1) / 2)
 	}
 	var ans int64
+	ans = int64(firstAscendIdx + 2)
 	i := firstAscendIdx
 	j := N - 1
-	for j == N-1 || j > firstAscendIdx {
+	for j == N-1 || nums[j] < nums[j+1] {
 		for i >= 0 && nums[i] >= nums[j] {
 			i--
 		}

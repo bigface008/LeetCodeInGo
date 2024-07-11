@@ -18,6 +18,18 @@ func Test(condition bool, format string, a ...any) {
 	fmt.Println()
 }
 
+func Equal(a, b []int) bool {
+	if len(a) != len(b) {
+		return false
+	}
+	for i := 0; i < len(a); i++ {
+		if a[i] != b[i] {
+			return false
+		}
+	}
+	return true
+}
+
 func testArrayMaker() {
 	arr1 := MakeIntArray("[1,2,3,4,5]")
 	fmt.Println(arr1)
@@ -99,7 +111,7 @@ func Make2DIntArray(arrStr string) [][]int {
 	return res
 }
 
-func make2DCharArray(arrStr string) [][]byte {
+func Make2DCharArray(arrStr string) [][]byte {
 	res := [][]byte{}
 	level := 0
 	i := 0
@@ -114,21 +126,10 @@ func make2DCharArray(arrStr string) [][]byte {
 		} else if ch == ']' {
 			level--
 			i++
-		} else if unicode.IsDigit(rune(ch)) || ch == '-' { // number start
-			j := i + 1
-			for ; j < len(arrStr); j++ {
-				if !unicode.IsDigit(rune(arrStr[j])) {
-					break
-				}
-			}
-			numStr := arrStr[i:j]
-			num, err := strconv.Atoi(numStr)
-			if err != nil {
-				log.Fatal(err)
-			}
+		} else if ch == '"' || ch == '\'' { // number start
 			end := len(res) - 1
-			res[end] = append(res[end], num)
-			i = j
+			res[end] = append(res[end], arrStr[i+1])
+			i += 3
 		} else {
 			i++
 		}
