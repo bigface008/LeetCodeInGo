@@ -111,6 +111,32 @@ func Make2DIntArray(arrStr string) [][]int {
 	return res
 }
 
+//func Make2DStrArray(arrStr string) [][]string {
+//	res := [][]string{}
+//	level := 0
+//	i := 0
+//	for i < len(arrStr) {
+//		ch := arrStr[i]
+//		if ch == '[' {
+//			if level == 1 {
+//				res = append(res, []byte{})
+//			}
+//			level++
+//			i++
+//		} else if ch == ']' {
+//			level--
+//			i++
+//		} else if ch == '"' || ch == '\'' { // number start
+//			end := len(res) - 1
+//			res[end] = append(res[end], arrStr[i+1])
+//			i += 3
+//		} else {
+//			i++
+//		}
+//	}
+//	return res
+//}
+
 func Make2DCharArray(arrStr string) [][]byte {
 	res := [][]byte{}
 	level := 0
